@@ -20,6 +20,8 @@ urlpatterns = [
     path('signout/', LogoutView.as_view(template_name='culture/index.html'), name='signout'),
     path('posts/', TemplateView.as_view(template_name='culture/posts.html'), name='posts'),
     path('services/', TemplateView.as_view(template_name='culture/services.html'), name='services'),
+    path('mylist/', TemplateView.as_view(template_name='culture/mylist.html'), name='mylist'),
+    path('signin/', LoginView.as_view(template_name='culture/signin.html'), name='signin'),
 
     # path('account/', views.account, name='account'),
     # path('account/register/', views.register, name='register'),
