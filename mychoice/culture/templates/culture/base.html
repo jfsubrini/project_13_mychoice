@@ -46,10 +46,11 @@
 				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
 				<ul class="nav nav-pills flex-column sidebar-nav">
 					<li class="nav-item"><a class="nav-link active" href="{% url 'index' %}"><em class="fa fa-history"></em> Actualité <span class="sr-only">(current)</span></a></li>
-					<li class="nav-item"><a class="nav-link" href="{% url 'posts' %}"><em class="fa fa-pencil"></em> Posts</a></li>
+					<li class="nav-item"><a class="nav-link" href="{% url 'categories' %}"><em class="fa fa-plus-circle"></em> Catégories</a></li>
+					<li class="nav-item"><a class="nav-link" href="{% url 'contribute' %}"><em class="fa fa-pencil"></em> Votre Avis</a></li>
 					<li class="nav-item"><a class="nav-link" href="{% url 'mylist' %}"><em class="fa fa-list-ul"></em> Ma Liste</a></li>
-					<li class="nav-item"><a class="nav-link" href="{% url 'services' %}"><em class="fa fa-info-circle"></em> Services</a></li>
-					<li class="nav-item"><a class="nav-link" href="{% url 'account' %}"><em class="fa fa-user"></em> Inscription</a></li>
+					<li class="nav-item"><a class="nav-link" href="{% url 'features' %}"><em class="fa fa-info-circle"></em> Fonctionnalités</a></li>
+					<li class="nav-item"><a class="nav-link" href="{% url 'register' %}"><em class="fa fa-user"></em> Inscription</a></li>
 					<li class="nav-item"><a class="nav-link" href="{% url 'signin' %}"><em class="fa fa-sign-in"></em> Connexion</a></li>
 				</ul>
 				<a href="{% url 'signout' %}" class="logout-button"><em class="fa fa-sign-out"></em> Déconnexion</a>
