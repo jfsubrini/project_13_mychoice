@@ -1,0 +1,50 @@
+/* My Own CSS code to complete the Bootstrap Theme */
+
+
+/* Background image for different templates */
+.features_img, .categories_img, .contribute_img,
+.index_img, .mylist_img, .register_img, .signin_img {
+	padding-top: 1rem;
+  	padding-bottom: calc(1rem - 56px);
+  	background-position: center center;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+
+.features_img {
+	background-image: url("../images/features.jpg");
+}
+
+.categories_img {
+	background-image: url("../images/features.jpg");
+}
+
+.contribute_img {
+	background-image: url("../images/features.jpg");
+}
+
+.index_img {
+	background-image: url("../images/features.jpg");
+}
+
+.mylist_img {
+	background-image: url("../images/features.jpg");
+}
+
+.register_img {
+	background-image: url("../images/features.jpg");
+}
+
+.signin_img {
+	background-image: url("../images/features.jpg");
+}
+
+.transparency {
+	opacity: 0.75;
+}
+
+.transparency2 {
+	opacity: 0.85;
+}
