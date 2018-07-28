@@ -19,6 +19,7 @@ urlpatterns = [
     path('account/', TemplateView.as_view(template_name='culture/account.html'), name='account'),
     path('signout/', LogoutView.as_view(template_name='culture/index.html'), name='signout'),
     path('posts/', TemplateView.as_view(template_name='culture/posts.html'), name='posts'),
+    path('services/', TemplateView.as_view(template_name='culture/services.html'), name='services'),
 
     # path('account/', views.account, name='account'),
     # path('account/register/', views.register, name='register'),

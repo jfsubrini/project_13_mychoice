@@ -1,0 +1,32 @@
+{% extends 'culture/base.html' %}
+{% block title %}Services{% endblock title %}
+{% block content %}
+{% load static %}
+
+<section class="row">
+	<div class="col-sm-12">
+		<section class="row">
+			<div class="col-md-12 col-lg-8 offset-lg-2">
+				<div class="jumbotron text-center">
+					<h1 class="mb-4">L’actualité culturelle que vous recommandez !</h1>
+					<p class="lead">Livres, films, séries, musique</p><hr>
+					<ul>
+						<li>Parce qu’il est toujours difficile de savoir quel livre acheter pour les vacances, quel film ou série regarder le samedi soir, ou quel album de musique mettre dans notre smartphone…</li>
+						<li>Parce que ce n’est pas l’information sur l’actualité culturelle qui manque mais son atomisation, son éparpillement…</li>
+						<li>Parce que l’intelligence collective est préférable ou complémentaire de l’avis de quelques critiques autorisés…</li>
+						<li>Parce que ce qui importe vraiment est ce qu’à éprouvé de positif, de profond et d’authentique chacun d’entre vous, confrontés à une œuvre culturelle avec la volonté de partager ces plaisirs.</li>
+					</ul><hr>
+					<ul>
+						<li>MyChoice est la plateforme qui vous permet de nous faire découvrir vos livres de chevets, les films qui vous ont marqué, les séries qui vous ont captivé et la musique qui berce votre âme ou fait remuer votre corps…</li>
+						<li>MyChoice vous permet de consulter, par catégories, les suggestions des contributeurs, et de participer ainsi à vos recommandations culturelles…</li>
+						<li>MyChoice vous permet de créer votre propre liste de livres à lire, films ou séries à voir ou musique à écouter grâce aux suggestions de la communauté…</li>
+						<li>MyChoice vous permet de mettre en place des notifications afin d’être informé en direct des dernières actualités postées sur notre site, selon vos préférences.</li>
+					</ul>
+					<p class="lead"><a class="btn btn-primary btn-lg mt-2" href="{% url 'index' %}" role="button">Retour à l'actualité</a></p>
+				</div>
+			</div>
+		</section>
+	</div>
+</section>
+
+{% endblock content %}
