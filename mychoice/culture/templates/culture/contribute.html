@@ -10,12 +10,6 @@
 				<div class="card mb-4">
 					<div class="card-block">
 						<h3 class="card-title">Vos recommandations</h3>
-						<div class="dropdown card-title-btn-container">
-							<button class="btn btn-sm tn-subtle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-cog"></em></button>
-							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#"><em class="fa fa-search mr-1"></em> More info</a>
-								<a class="dropdown-item" href="#"><em class="fa fa-thumb-tack mr-1"></em> Pin Window</a>
-								<a class="dropdown-item" href="#"><em class="fa fa-remove mr-1"></em> Close Window</a></div>
-						</div>
 						<h6 class="card-subtitle mb-2 text-muted">Vos coups de cœur</h6>
 						<form class="form-horizontal" action="" method="post">
 							<fieldset>
@@ -46,29 +40,113 @@
 										</div>
 								</div>
 								
-								<!-- Result of the item search on Amazon website -->
+								<!-- Result of a book search on Amazon website -->
 								<div class="row">
 									<div class="col-lg-5 mb-4 bg-default">
 										<div class="card">
-											<div class="card-header fa fa-amazon fa-lg"> Photo</div>
+											<div class="card-header fa fa-amazon fa-lg"> Photo du livre</div>
 											<div class="card-block">
-												<a class="portfolio-box badge1" data-badge="{{ substitute.nutrition_grade }}" href="{% static 'culture/images/9782246813880-001-T.jpg' %}">
+												<a class="portfolio-box badge1" data-badge="{{ substitute.nutrition_grade }}" href="{% static 'culture/images/livre.jpg' %}">
 												<figure>
-											    <img class="img-fluid img_center" src="{% static 'culture/images/9782246813880-001-T.jpg' %}" alt="{{ substitute.name }}" width="100%">
+											    <img class="img-fluid img_center" src="{% static 'culture/images/livre.jpg' %}" alt="{{ substitute.name }}" width="100%">
 												</a>
 											</div>
 										</div>
 									</div>
 									<div class="col-lg-7 mb-4">
 										<div class="card text-white bg-primary">
-											<div class="card-header fa fa-amazon fa-lg"> Information</div>
+											<div class="card-header fa fa-amazon fa-lg"> Informations sur le livre</div>
 											<div class="card-block">
 												<p>Titre : La tresse<br>
 												Auteur : Læticia Colombani<br>
+												Année : 2017<br>
 												Editeur : Grasset<br>
 												Collection : Littérature Française<br>
+												Pages : 224<br>
+												Langue : Français<br>
 												Prix : 18,00 €<br>
 												ISBN-13 : 978-2246813880</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Result of a film search on Allociné website -->
+								<div class="row">
+									<div class="col-lg-5 mb-4 bg-default">
+										<div class="card">
+											<div class="card-header"><img src="{% static 'culture/images/icon_allocine.png' %}" width=10%> Photo de l'affiche</div>
+											<div class="card-block">
+												<a class="portfolio-box badge1" data-badge="{{ substitute.nutrition_grade }}" href="{% static 'culture/images/film.jpg' %}">
+												<figure>
+											    <img class="img-fluid img_center" src="{% static 'culture/images/film.jpg' %}" alt="{{ substitute.name }}" width="100%">
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-7 mb-4">
+										<div class="card text-white bg-primary">
+											<div class="card-header"><img src="{% static 'culture/images/icon_allocine.png' %}" width=6%> Informations sur le film</div>
+											<div class="card-block">
+												<p>Titre : A la dérive<br>
+												Réalisateur : Baltasar Kormákur<br>
+												Année : 2018<br>
+												Nationalité : Américain<br>
+												Genre : Drame<br>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Result of a serie search on Allociné website -->
+								<div class="row">
+									<div class="col-lg-5 mb-4 bg-default">
+										<div class="card">
+											<div class="card-header"><img src="{% static 'culture/images/icon_allocine.png' %}" width=10%> Photo</div>
+											<div class="card-block">
+												<a class="portfolio-box badge1" data-badge="{{ substitute.nutrition_grade }}" href="{% static 'culture/images/serie.jpg' %}">
+												<figure>
+											    <img class="img-fluid img_center" src="{% static 'culture/images/serie.jpg' %}" alt="{{ substitute.name }}" width="100%">
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-7 mb-4">
+										<div class="card text-white bg-primary">
+											<div class="card-header"><img src="{% static 'culture/images/icon_allocine.png' %}" width=6%> Informations sur la série</div>
+											<div class="card-block">
+												<p>Titre : La Casa de Papel<br>
+												Auteur : Alex Pina<br>
+												Année : 2017<br>
+												Pays : Espagne<br>
+												Genre : Drame<br>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Result of a music LP search on Amazon website -->
+								<div class="row">
+									<div class="col-lg-5 mb-4 bg-default">
+										<div class="card">
+											<div class="card-header fa fa-amazon fa-lg"> Photo de l'album</div>
+											<div class="card-block">
+												<a class="portfolio-box badge1" data-badge="{{ substitute.nutrition_grade }}" href="{% static 'culture/images/disque.jpg' %}">
+												<figure>
+											    <img class="img-fluid img_center" src="{% static 'culture/images/disque.jpg' %}" alt="{{ substitute.name }}" width="100%">
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-7 mb-4">
+										<div class="card text-white bg-primary">
+											<div class="card-header fa fa-amazon fa-lg"> Informations sur l'album</div>
+											<div class="card-block">
+												<p>Titre : Houses Of The Holy<br>
+												Auteur : Led Zeppelin<br>
+												Année : 2014<br>
+												Label : Atlantic<br>
+												Prix : 15,99 €<br>
 											</div>
 										</div>
 									</div>
@@ -88,7 +166,7 @@
 								<div class="form-group">
 									<label class="col-12 control-label no-padding" for="message">Vos commentaires</label>
 									<div class="col-12 no-padding">
-										<textarea class="form-control" id="message" name="message" placeholder="Entrez vos commentaires sur le produit culturel sélectionné pour donner envie aux visiteurs de partager votre coup de cœur." rows="10"></textarea>
+										<textarea class="form-control" id="message" name="message" placeholder="Entrez vos commentaires sur ce produit pour partager votre coup de cœur." rows="10"></textarea>
 									</div>
 								</div>
 								
