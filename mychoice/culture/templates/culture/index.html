@@ -11,98 +11,34 @@
 					<h1 class="mb-4">L’actualité culturelle que vous recommandez !</h1>
 					<p class="lead">Livres, films, séries, musique</p>
 					<p>Postez vos coups de cœur et faites nous profiter de vos découvertes.</p>
-					<p class="lead"><a class="btn btn-primary btn-lg mt-2" href="#" role="button">Appenez-en plus sur nos services</a></p>
+					<p class="lead"><a class="btn btn-primary btn-lg mt-2" href="#" role="button">Découvrez notre concept</a></p>
 				</div>
+				<div class="card mb-4">
+					<div class="card-block">
+						<h3 class="card-title">Vos coups de <span class="fa fa-heart fa-lg"></h3>
 
-				<div class="card mb-4">
-					<div class="card-block">
-						<h3 class="card-title">Recent Orders</h3>
-						<div class="dropdown card-title-btn-container">
-							<button class="btn btn-sm btn-subtle" type="button"><em class="fa fa-list-ul"></em> View All</button>
-							<button class="btn btn-sm btn-subtle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-cog"></em></button>
-							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#"><em class="fa fa-search mr-1"></em> More info</a>
-							    <a class="dropdown-item" href="#"><em class="fa fa-thumb-tack mr-1"></em> Pin Window</a>
-							    <a class="dropdown-item" href="#"><em class="fa fa-remove mr-1"></em> Close Window</a></div>
-						</div>
-						<div class="table-responsive">
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th>Order #</th>
-										<th>Product</th>
-										<th>Customer</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>0001</td>
-										<td>Product Name 1</td>
-										<td>Customer 1</td>
-										<td>Complete</td>
-									</tr>
-									<tr>
-										<td>0002</td>
-										<td>Product Name 2</td>
-										<td>Customer 2</td>
-										<td>Complete</td>
-									</tr>
-									<tr>
-										<td>0003</td>
-										<td>Product Name 3</td>
-										<td>Customer 3</td>
-										<td>Processing</td>
-									</tr>
-									<tr>
-										<td>0004</td>
-										<td>Product Name 4</td>
-										<td>Customer 4</td>
-										<td>Pending</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-				<div class="card mb-4">
-					<div class="card-block">
-						<h3 class="card-title">Articles</h3>
-						<div class="dropdown card-title-btn-container">
-							<button class="btn btn-sm btn-subtle" type="button"><em class="fa fa-list-ul"></em> View All</button>
-							<button class="btn btn-sm btn-subtle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-cog"></em></button>
-							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#"><em class="fa fa-search mr-1"></em> More info</a>
-							    <a class="dropdown-item" href="#"><em class="fa fa-thumb-tack mr-1"></em> Pin Window</a>
-							    <a class="dropdown-item" href="#"><em class="fa fa-remove mr-1"></em> Close Window</a></div>
-						</div>
-						<h6 class="card-subtitle mb-2 text-muted">Latest news</h6>
+						<h6 class="card-subtitle mb-2 text-muted">Dernières publications</h6>
 						<div class="divider" style="margin-top: 1rem;"></div>
 						<div class="articles-container">
 							<div class="article border-bottom">
 								<div class="col-xs-12">
 									<div class="row">
-										<div class="col-2 date">
-											<div class="large">30</div>
-											<div class="text-muted">Jun</div>
+										<div class="dropdown user-dropdown col-md-6 col-lg-3 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<img src="{% static 'culture/images/profile-pic.jpg' %}" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
+											<div class="username mt-1">
+												<h4 class="mb-1">Julie Desplat</h4>
+												<h6 class="text-muted">31/8/18 12:23:34</h6>
+											</div>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
+												 <a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> Voir son Profil</a>
+											     <a class="dropdown-item" href="#"><em class="fa fa-pencil mr-1"></em> Voir ses <span class="fa fa-heart fa-lg"></span></a>
+											</div>
 										</div>
-										<div class="col-10">
-											<h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
-										</div>
-									</div>
-								</div>
-								<div class="clear"></div>
-							</div><!--End .article-->
-							
-							<div class="article">
-								<div class="col-xs-12">
-									<div class="row">
-										<div class="col-2 date">
-											<div class="large">30</div>
-											<div class="text-muted">Jun</div>
-										</div>
-										<div class="col-10">
-											<h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
+										<div class="clear"></div>
+										<div class="col-md-11 offset-md-1 col-lg-8 offset-lg-1">
+											<h4><a href="#">La tresse, de Læticia Colombani</a></h4>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat...</p>
 										</div>
 									</div>
 								</div>
@@ -112,13 +48,47 @@
 							<div class="article">
 								<div class="col-xs-12">
 									<div class="row">
-										<div class="col-2 date">
-											<div class="large">30</div>
-											<div class="text-muted">Jun</div>
+										<div class="dropdown user-dropdown col-md-6 col-lg-3 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<img src="{% static 'culture/images/profile-pic2.jpg' %}" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
+											<div class="username mt-1">
+												<h4 class="mb-1">Robert Molina</h4>
+												<h6 class="text-muted">30/8/18 15:26:12</h6>
+											</div>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
+												 <a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> Voir son Profil</a>
+											     <a class="dropdown-item" href="#"><em class="fa fa-pencil mr-1"></em> Voir ses <span class="fa fa-heart fa-lg"></span></a>
+											</div>
 										</div>
-										<div class="col-10">
-											<h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
+										<div class="clear"></div>
+										<div class="col-md-11 offset-md-1 col-lg-8 offset-lg-1">
+											<h4><a href="#">La tresse, de Læticia Colombani</a></h4>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat...</p>
+										</div>
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div><!--End .article-->
+							
+							<div class="article">
+								<div class="col-xs-12">
+									<div class="row">
+										<div class="dropdown user-dropdown col-md-6 col-lg-3 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<img src="{% static 'culture/images/profile-pic3.jpg' %}" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
+											<div class="username mt-1">
+												<h4 class="mb-1">Julien Dropane</h4>
+												<h6 class="text-muted">31/8/18 12:23:34</h6>
+											</div>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
+												 <a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> Voir son Profil</a>
+											     <a class="dropdown-item" href="#"><em class="fa fa-pencil mr-1"></em> Voir ses <span class="fa fa-heart fa-lg"></span></a>
+											</div>
+										</div>
+										<div class="clear"></div>
+										<div class="col-md-11 offset-md-1 col-lg-8 offset-lg-1">
+											<h4><a href="#">Aurore, de Fredrich Nietzsche</a></h4>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat...</p>
 										</div>
 									</div>
 								</div>
