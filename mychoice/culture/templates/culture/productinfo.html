@@ -1,0 +1,158 @@
+{% extends 'culture/base.html' %}
+{% block title %}Votre Avis{% endblock title %}
+{% block content %}
+{% load static %}
+
+<section class="row contribute_img">
+	<div class="col-sm-12">
+		<section class="row">
+			<div class="col-md-12 col-lg-8 offset-lg-2">
+				<div class="card mb-4">
+					<div class="card-block">
+						<h3 class="card-title text-center">La tresse</h3>
+						<h6 class="card-subtitle mb-2 text-muted text-center">Læticia Colombani</h6>
+	
+						<!-- Result of a book search on Amazon website -->
+						<div class="row">
+							<div class="col-lg-5 mb-4 bg-default">
+								<div class="card">
+									<div class="card-header fa fa-amazon fa-lg"> Photo du livre</div>
+									<div class="card-block">
+										<a class="portfolio-box badge1" data-badge="{{ substitute.nutrition_grade }}" href="{% static 'culture/images/livre.jpg' %}">
+									    <img class="img-fluid img_center" src="{% static 'culture/images/livre.jpg' %}" alt="{{ substitute.name }}" width="100%">
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-7 mb-4">
+								<div class="card text-white bg-primary">
+									<div class="card-header fa fa-amazon fa-lg"> Informations sur le livre</div>
+									<div class="card-block">
+										<p>Titre : La tresse<br>
+										Auteur : Læticia Colombani<br>
+										Année : 2017<br>
+										Editeur : Grasset<br>
+										Collection : Littérature Française<br>
+										Pages : 224<br>
+										Langue : Français<br>
+										Prix : 18,00 €<br>
+										ISBN-13 : 978-2246813880</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Result of a film search on Allociné website -->
+						<div class="row">
+							<div class="col-lg-5 mb-4 bg-default">
+								<div class="card">
+									<div class="card-header"><img src="{% static 'culture/images/icon_allocine.png' %}" width=10%> Photo de l'affiche</div>
+									<div class="card-block">
+										<a class="portfolio-box badge1" data-badge="{{ substitute.nutrition_grade }}" href="{% static 'culture/images/film.jpg' %}">
+									    <img class="img-fluid img_center" src="{% static 'culture/images/film.jpg' %}" alt="{{ substitute.name }}" width="100%">
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-7 mb-4">
+								<div class="card text-white bg-primary">
+									<div class="card-header"><img src="{% static 'culture/images/icon_allocine.png' %}" width=6%> Informations sur le film</div>
+									<div class="card-block">
+										<p>Titre : A la dérive<br>
+										Réalisateur : Baltasar Kormákur<br>
+										Année : 2018<br>
+										Nationalité : Américain<br>
+										Genre : Drame<br>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Result of a serie search on Allociné website -->
+						<div class="row">
+							<div class="col-lg-5 mb-4 bg-default">
+								<div class="card">
+									<div class="card-header"><img src="{% static 'culture/images/icon_allocine.png' %}" width=10%> Photo</div>
+									<div class="card-block">
+										<a class="portfolio-box badge1" data-badge="{{ substitute.nutrition_grade }}" href="{% static 'culture/images/serie.jpg' %}">
+									    <img class="img-fluid img_center" src="{% static 'culture/images/serie.jpg' %}" alt="{{ substitute.name }}" width="100%">
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-7 mb-4">
+								<div class="card text-white bg-primary">
+									<div class="card-header"><img src="{% static 'culture/images/icon_allocine.png' %}" width=6%> Informations sur la série</div>
+									<div class="card-block">
+										<p>Titre : La Casa de Papel<br>
+										Auteur : Alex Pina<br>
+										Année : 2017<br>
+										Pays : Espagne<br>
+										Genre : Drame<br>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Result of a music LP search on Amazon website -->
+						<div class="row">
+							<div class="col-lg-5 mb-4 bg-default">
+								<div class="card">
+									<div class="card-header fa fa-amazon fa-lg"> Photo de l'album</div>
+									<div class="card-block">
+										<a class="portfolio-box badge1" data-badge="{{ substitute.nutrition_grade }}" href="{% static 'culture/images/disque.jpg' %}">
+									    <img class="img-fluid img_center" src="{% static 'culture/images/disque.jpg' %}" alt="{{ substitute.name }}" width="100%">
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-7 mb-4">
+								<div class="card text-white bg-primary">
+									<div class="card-header fa fa-amazon fa-lg"> Informations sur l'album</div>
+									<div class="card-block">
+										<p>Titre : Houses Of The Holy<br>
+										Auteur : Led Zeppelin<br>
+										Année : 2014<br>
+										Label : Atlantic<br>
+										Prix : 15,99 €<br>
+									</div>
+								</div>
+							</div>
+						</div>
+				
+						<!-- Recommended by -->
+						<h3 class="card-title text-center">Recommandé par</h3>
+							<div class="dropdown user-dropdown col-md-6 col-lg-3 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<img src="{% static 'culture/images/profile-pic.jpg' %}" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
+								<div class="username mt-1">
+									<h4 class="mb-1">Julie Desplat</h4>
+									<h6 class="text-muted">31/8/18 12:23:34</h6>
+								</div>
+								</a>
+								<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
+									<a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> Voir son Profil</a>
+									<a class="dropdown-item" href="#"><em class="fa fa-pencil mr-1"></em> Voir ses <span class="fa fa-heart fa-lg"></span></a>
+								</div>
+							</div>
+
+						<!-- Comments by the contributor on the selected product -->
+						<div class="form-group">
+							<div class="col-12 no-padding">
+								<h4 class="form-control">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</h4>
+							</div>
+						</div>
+						
+						<!-- Save -->
+						<div class="form-group text-center">
+							<div class="col-12 widget-right no-padding">
+								<button class="btn btn-warning margin" type="button"><span class="fa fa-floppy-o fa-lg"></span> &nbsp;Enregistrer</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</section>
+
+{% endblock content %}

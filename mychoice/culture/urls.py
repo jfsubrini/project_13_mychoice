@@ -23,6 +23,8 @@ urlpatterns = [
     path('mylist/', TemplateView.as_view(template_name='culture/mylist.html'), name='mylist'),
     path('signin/', LoginView.as_view(template_name='culture/signin.html'), name='signin'),
     path('categories/', TemplateView.as_view(template_name='culture/categories.html'), name='categories'),
+    path('productinfo/', TemplateView.as_view(template_name='culture/productinfo.html'), name='productinfo'),
+    # path('productinfo/<int:pk>/', views.ProductInfo.as_view(), name='productinfo'),
 
     # path('account/', views.account, name='account'),
     # path('account/register/', views.register, name='register'),
