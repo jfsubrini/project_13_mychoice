@@ -62,7 +62,7 @@ from django.db import models
 class Category(models.Model):
     """To create the Category table in the database."""
     # name = EnumChoiceField(CategoryName, verbose_name="nom")
-    name = models.CharField("fddfdfdfdfdfdfdfdf", max_length=255) ## FAUX
+    name = models.CharField("catégorie", max_length=255) ## FAUX
 
     class Meta:
         verbose_name = "catégorie"
@@ -74,9 +74,9 @@ class Category(models.Model):
 class Recommandation(models.Model):
     """To create the Recommandation table in the database which stores
     the recommandation of cultural products of each user."""
-    comment = models.CharField("commentaires", max_length=255)
-    # date = models.#########)
-    
+    comment = models.TextField("commentaires")
+    date = models.DateTimeField("date", auto_now=True)
+
     class Meta:
         verbose_name = "commentaires"
 
@@ -87,20 +87,20 @@ class Recommandation(models.Model):
 class CulturalProduct(models.Model):
     """To create the CulturalProduct table in the database with 8 attributs (fields)."""
     title = models.CharField("titre", max_length=100)
-    author = models.CharField("auteur", max_length=100, null=True)
+    author = models.CharField("auteur", max_length=100, blank=True)
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, related_name='category', verbose_name="catégorie")
-    director = models.CharField("réalisateur", max_length=100, null=True)
-    editor = models.CharField("éditeur", max_length=100, null=True)
-    collection = models.CharField("collection", max_length=100, null=True)
-    # price = models.Decimal ################### null=True)
-    # isbn = models.############################ null=True)
+    director = models.CharField("réalisateur", max_length=100, blank=True)
+    editor = models.CharField("éditeur", max_length=100, blank=True)
+    collection = models.CharField("collection", max_length=100, blank=True)
+    price = models.DecimalField("prix", max_digits=5, decimal_places=2, null=True)
+    isbn = models.CharField("isbn", max_length=20, blank=True)
     year = models.SmallIntegerField("année")
-    genre = models.CharField("genre", max_length=30, null=True)
-    nationality = models.CharField("nationalité", max_length=20, null=True)
+    genre = models.CharField("genre", max_length=30, blank=True)
+    nationality = models.CharField("nationalité", max_length=20, blank=True)
     pages = models.SmallIntegerField("pages", null=True)
-    language = models.CharField("langue", max_length=30, null=True)
-    label = models.CharField("genre", max_length=30, null=True)
+    language = models.CharField("langue", max_length=30, blank=True)
+    label = models.CharField("genre", max_length=30, blank=True)
     # image = models.############)
     recommandation = models.ForeignKey(
         Recommandation, on_delete=models.CASCADE, related_name='recommandation', verbose_name="recommandation")
@@ -131,7 +131,7 @@ class Notification(models.Model):
 class MyList(models.Model):
     """To create the MyList table in the database which stores
     the list of cultural products for each user."""
-    # setting = models.#######)
+    setting = models.DateTimeField("date", auto_now=True)
     cultural_product = models.ManyToManyField(
         CulturalProduct, related_name='cultural_product_selected', verbose_name="porduit culturel sélectionné")
 
