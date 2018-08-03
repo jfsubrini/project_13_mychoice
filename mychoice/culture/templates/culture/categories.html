@@ -19,19 +19,22 @@
 					<div class="card-block">
 						<h3 class="card-title">Livres</h3>
 						<div class="dropdown card-title-btn-container">
-							<button class="btn btn-sm btn-subtle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-list-ul"></em> Catégories</button>
+							<button class="btn btn-sm btn-subtle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-filter"></em> Catégories</button>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
 								<a class="dropdown-item" href="#"><em class="fa fa-book mr-1"></em> Livres</a>
 							    <a class="dropdown-item" href="#"><em class="fa fa-film mr-1"></em> Films</a>
 							    <a class="dropdown-item" href="#"><em class="fa fa-television mr-1"></em> Séries</a>
 							    <a class="dropdown-item" href="#"><em class="fa fa-music mr-1"></em> Musique</a></div>
-							<button class="btn btn-sm btn-subtle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-cog"></em></button>
-							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#"> tri par âge</a>
-							    <a class="dropdown-item" href="#"> tri par année</a>
-							    <a class="dropdown-item" href="#"> tri par genre</a></div>
 						</div>
 						<h6 class="card-subtitle mb-2 text-muted text-center">Vos messages</h6>
+						<div class="custom-control custom-checkbox float-right">
+							<input type="checkbox" class="custom-control-input" id="customCheck1">
+							<label class="custom-control-label custom-control-description" for="customCheck1"> Tri par année</label>
+						</div><br>
+						<div class="custom-control custom-checkbox float-right">
+							<input type="checkbox" class="custom-control-input" id="customCheck2">
+							<label class="custom-control-label custom-control-description" for="customCheck2"> Tri par genre</label>
+						</div><br>
 						<div class="divider" style="margin-top: 1rem;"></div>
 						<div class="articles-container">
 							<div class="article border-bottom">
@@ -45,13 +48,13 @@
 											</div>
 											</a>
 											<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
-												 <a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> Voir son Profil</a>
+												 <a class="dropdown-item" href="{% url 'profile' %}"><em class="fa fa-user-circle mr-1"></em> Voir son Profil</a>
 											     <a class="dropdown-item" href="#"><em class="fa fa-pencil mr-1"></em> Voir ses <span class="fa fa-heart fa-lg"></span></a>
 											</div>
 										</div>
 										<div class="clear"></div>
 										<div class="col-md-11 offset-md-1 col-lg-8 offset-lg-1">
-											<h4><a href="#">La tresse, de Læticia Colombani</a></h4>
+											<h4><a href="{% url 'productinfo' %}">La tresse, de Læticia Colombani</a></h4>
 											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat...</p>
 										</div>
 									</div>
@@ -70,13 +73,13 @@
 											</div>
 											</a>
 											<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
-												 <a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> Voir son Profil</a>
+												 <a class="dropdown-item" href="{% url 'profile' %}"><em class="fa fa-user-circle mr-1"></em> Voir son Profil</a>
 											     <a class="dropdown-item" href="#"><em class="fa fa-pencil mr-1"></em> Voir ses <span class="fa fa-heart fa-lg"></span></a>
 											</div>
 										</div>
 										<div class="clear"></div>
 										<div class="col-md-11 offset-md-1 col-lg-8 offset-lg-1">
-											<h4><a href="#">Aurore, de Fredrich Nietzsche</a></h4>
+											<h4><a href="{% url 'productinfo' %}">Aurore, de Fredrich Nietzsche</a></h4>
 											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat...</p>
 										</div>
 									</div>
@@ -95,13 +98,13 @@
 											</div>
 											</a>
 											<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
-												 <a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> Voir son Profil</a>
+												 <a class="dropdown-item" href="{% url 'profile' %}"><em class="fa fa-user-circle mr-1"></em> Voir son Profil</a>
 											     <a class="dropdown-item" href="#"><em class="fa fa-pencil mr-1"></em> Voir ses <span class="fa fa-heart fa-lg"></span></a>
 											</div>
 										</div>
 										<div class="clear"></div>
 										<div class="col-md-11 offset-md-1 col-lg-8 offset-lg-1">
-											<h4><a href="#">La tresse, de Læticia Colombani</a></h4>
+											<h4><a href="{% url 'productinfo' %}">La tresse, de Læticia Colombani</a></h4>
 											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat...</p>
 										</div>
 									</div>

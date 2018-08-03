@@ -38,7 +38,6 @@
     <script src="{% static 'culture/js/custom.js' %}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    
 </head>
 <body>
 	<div class="container-fluid" id="wrapper">
@@ -70,9 +69,9 @@
 							<h6 class="text-muted">Super Admin</h6>
 						</div>
 						</a>
-						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink"><a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> View Profile</a>
-						     <a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Preferences</a>
-						     <a class="dropdown-item" href="{% url 'signout' %}"><em class="fa fa-power-off mr-1"></em> Logout</a></div>
+						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink"><a class="dropdown-item" href="{% url 'profile' %}"><em class="fa fa-user-circle mr-1"></em> Voir mon Profil</a>
+						     <a class="dropdown-item" href="{% url 'register' %}"><em class="fa fa-sliders mr-1"></em> Modifier mon Profil</a>
+						     <a class="dropdown-item" href="{% url 'signout' %}"><em class="fa fa-power-off mr-1"></em> Déconnexion</a></div>
 					</div>
 					<div class="clear"></div>
 				</header>

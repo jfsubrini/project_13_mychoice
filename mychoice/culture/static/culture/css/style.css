@@ -699,8 +699,8 @@ code {
   border-bottom-left-radius: 0; }
 
 input[type=checkbox]:checked + label {
-  text-decoration: line-through;
-  color: #a0a0a0; }
+/*  text-decoration: line-through;
+*/  color: #a0a0a0; }
 
 .todo-list-item:hover, a.todo-list-item:focus {
   text-decoration: none; }
