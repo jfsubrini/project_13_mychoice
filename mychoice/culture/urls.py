@@ -25,6 +25,9 @@ urlpatterns = [
     path('categories/', TemplateView.as_view(template_name='culture/categories.html'), name='categories'),
     path('productinfo/', TemplateView.as_view(template_name='culture/productinfo.html'), name='productinfo'),
     # path('productinfo/<int:pk>/', views.ProductInfo.as_view(), name='productinfo'),
+    path('profile/', TemplateView.as_view(template_name='culture/profile.html'), name='profile'),
+    # path('profile/<int:pk>/', views.Profile.as_view(), name='profile'),
+
 
     # path('account/', views.account, name='account'),
     # path('account/register/', views.register, name='register'),

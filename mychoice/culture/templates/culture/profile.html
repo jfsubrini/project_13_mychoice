@@ -1,0 +1,43 @@
+{% extends 'culture/base.html' %}
+{% block title %}Créez un compte{% endblock title %}
+{% block content %}
+{% load static %}
+
+<section class="row register_img">
+	<div class="col-sm-12 transparency2">
+		<section class="row">
+			<div class="col-12">
+				<div class="card mb-4">
+					<div class="card-block">
+						<div class="dropdown user-dropdown col-md-6 col-lg-3 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<img src="{% static 'culture/images/profile-pic.jpg' %}" alt="profile photo" class="circle float-left profile-photo" width="100" height="auto">
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
+							 <a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> Voir son Profil</a>
+						     <a class="dropdown-item" href="#"><em class="fa fa-pencil mr-1"></em> Voir ses <span class="fa fa-heart fa-lg"></span></a>
+						</div>
+					</div>
+						<h2 class="card-title text-center">Julie Desplat</h2>
+						<div class="col-lg-8 offset-lg-2 mb-4">
+							<div class="card text-white bg-info"><br>
+								<div class="card-header text-center fa fa-user-o fa-lg"><h4>Informations sur le profil</h4></div>
+								<div class="card-block">
+									<h5>Julie Desplat est une femme âgée de 26 à 35 ans, vivant dans la région Auvergne-Rhône-Alpes et qui se décrit de la manière suivante :</h5>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-8 offset-lg-2 mb-4">
+							<div class="card text-white bg-info">
+								<div class="card-block">
+									<p>J'aime blablfsdf dsf dsfdsf dfs dfsdsf dfs. dfsdfs dfsdfs dfs dfs dfs dsf dfs blablfsdf dsf dsfdsf dfs dfsdsf dfs. dfsdfs dfsdfs dfs dfs dfs dsf dfs dfs dsfdfs dsf dsf dfs dfs fr zer zert rqdz qds qds qsdqsdf fs fsd dsf dfs dfs dfs dfs dfs sdf sdf sdf dfsdf sefsdgsdgf sdf sdv sdg segg  gsg s dg sg sgrsg srg.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</section>
+
+{% endblock content %}

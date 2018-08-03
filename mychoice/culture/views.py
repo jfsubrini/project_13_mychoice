@@ -25,3 +25,11 @@
 #     context_object_name = "product_info"
 #     model = Recommandation
 #     template_name = "culture/productinfo.html"
+
+
+# ####### PAGE DE PROFIL DES CONTRIBUTEURS #######
+# class Profile(DetailView):
+#     """ Generic View for the profile page. """
+#     context_object_name = "profile"
+#     model = User
+#     template_name = "culture/profile.html"
