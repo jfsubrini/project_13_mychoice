@@ -2,67 +2,24 @@
 
 
 # Standard library imports
-# from enumchoicefield import ChoiceEnum, EnumChoiceField
+#####
 
 # Django imports
-from django.conf import settings
+# from django.conf import settings
 from django.db import models
+from django.contrib.auth.models import User
 
-
-
-# class CategoryName(ChoiceEnum):
-#     """ENUM values for name in the Category model."""
-#     1 = "Livres"
-#     2 = "Films"
-#     3 = "Séries"
-#     4 = "Musique"
-
-
-# class Region(ChoiceEnum):
-#     """ENUM values for region in the User model."""
-#     1 = "Auvergne-Rhône-Alpes"
-#     2 = "Bourgogne-Franche-Comté"
-#     3 = "Bretagne"
-#     4 = "Centre-Val de Loire"
-#     5 = "Corse"
-#     6 = "Grand Est"
-#     7 = "Hauts-de-France"
-#     8 = "Normandie"
-#     9 = "Nouvelle-Aquitaine"
-#     10 = "Occitanie"
-#     11 = "Pays de la Loire"
-#     12 = "Provence-Alpes-Côte d'Azur"
-#     13 = "Guadeloupe"
-#     14 = "Guyane"
-#     15 = "Martinique"
-#     16 = "La Réunion"
-#     17 = "Mayotte"
-#     18 = "Territoires d'outre-mer"
-#     19 = "Europe"
-#     20 = "Reste du monde"
-
-
-# class Age(ChoiceEnum):
-#     """ENUM values for age in the User model."""
-#     1 = "Moins de 18 ans"
-#     2 = "De 18 à 25 ans"
-#     3 = "De 26 à 35 ans"
-#     4 = "De 36 à 45 ans"
-#     5 = "De 46 à 59 ans"
-#     6 = "De 60 à 75 ans"
-#     7 = "Plus de 75 ans"
-
-
-# class Gender(ChoiceEnum):
-#     """ENUM values for gender in the User model."""
-#     customRadio1 = "Masculin"
-#     customRadio2 = "Féminin"
 
 
 class Category(models.Model):
-    """To create the Category table in the database."""
-    # name = EnumChoiceField(CategoryName, verbose_name="nom")
-    name = models.CharField("catégorie", max_length=255) ## FAUX
+    """To create the Category table in the database with 4 choices as category name."""
+    CATEGORY_NAME = (
+        ('L', 'Livres'),
+        ('F', 'Films'),
+        ('S', 'Séries'),
+        ('M', 'Musique'),
+        )
+    name = models.CharField("catégorie", max_length=1, choices=CATEGORY_NAME)
 
     class Meta:
         verbose_name = "catégorie"
@@ -101,31 +58,15 @@ class CulturalProduct(models.Model):
     pages = models.SmallIntegerField("pages", null=True)
     language = models.CharField("langue", max_length=30, blank=True)
     label = models.CharField("genre", max_length=30, blank=True)
-    # image = models.############)
+    image = models.ImageField("image du produit")
     recommandation = models.ForeignKey(
         Recommandation, on_delete=models.CASCADE, related_name='recommandation', verbose_name="recommandation")
-
-    # image_food = models.URLField("url de l'image de l'aliment")
 
     class Meta:
         verbose_name = "produit culturel"
 
     def __str__(self):
         return '%s %s' % (self.title)
-
-
-class Notification(models.Model):
-    """To create the Notification table in the database which stores
-    the notification of each user."""
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    category_to_follow = models.ManyToManyField(
-        Category, related_name='category_to_follow', verbose_name="catégories à suivre")
-
-    class Meta:
-        verbose_name = "notification"
-
-    def __str__(self):
-        return self.user
 
 
 class MyList(models.Model):
@@ -140,3 +81,77 @@ class MyList(models.Model):
 
     def __str__(self):
         return self.cultural_product
+
+
+class Notification(models.Model):
+    """To create the Notification table in the database which stores
+    the notification of each user."""
+    setting = models.DateTimeField("date", auto_now=True)
+    category_to_follow = models.ManyToManyField(
+        Category, related_name='category_to_follow', verbose_name="catégories à suivre")
+
+    class Meta:
+        verbose_name = "notification"
+
+    def __str__(self):
+        return self.category_to_follow
+
+
+class UserProfile(models.Model):
+    """To create the ...."""
+    GENDER = (
+        ('M', 'Masculin'),
+        ('F', 'Féminin'),
+        )
+    AGE_BRACKET = (
+        ('1', 'Moins de 18 ans'),
+        ('2', 'De 18 à 25 ans'),
+        ('3', 'De 26 à 35 ans'),
+        ('4', 'De 36 à 45 ans'),
+        ('5', 'De 46 à 59 ans'),
+        ('6', 'De 60 à 75 ans'),
+        ('7', 'Plus de 75 ans'),
+        )
+    REGION = (
+        ('FR-ARA', 'Auvergne-Rhône-Alpes'),
+        ('FR-BFC', 'Bourgogne-Franche-Comté'),
+        ('FR-BRE', 'Bretagne'),
+        ('FR-CVL', 'Centre-Val de Loire'),
+        ('FR-COR', 'Corse'),
+        ('FR-GES', 'Grand Est'),
+        ('FR-HDF', 'Hauts-de-France'),
+        ('FR-IDF', 'Île-de-France'),
+        ('FR-NOR', 'Normandie'),
+        ('FR-NAQ', 'Nouvelle-Aquitaine'),
+        ('FR-OCC', 'Occitanie'),
+        ('FR-PDL', 'Pays de la Loire'),
+        ('FR-PAC', 'Provence-Alpes-Côte d\'Azur'),
+        ('FR-GP', 'Guadeloupe'),
+        ('FR-GF', 'Guyane'),
+        ('FR-MQ', 'Martinique'),
+        ('FR-RE', 'La Réunion'),
+        ('FR-YT', 'Mayotte'),
+        ('FR-TOM', 'Territoires d\'outre-mer'),
+        ('EUROPE', 'Europe'),
+        ('MONDE', 'Reste du monde'),
+        )
+    # user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # username = models.CharField("utilisateur", max_length=50)
+    # email = models.EmailField("email", max_length=100)
+    # password = models.CharField("mot de passe", max_length=30)
+    gender = models.CharField("catégorie", max_length=1, choices=GENDER)
+    age = models.CharField("catégorie", max_length=1, choices=AGE_BRACKET)
+    region = models.CharField("catégorie", max_length=6, choices=REGION)
+    photo = models.ImageField("photo", upload_to='profile_photo', blank=True)
+    presentation = models.TextField("presentation", blank=True)
+    mylist = models.ForeignKey(
+        MyList, on_delete=models.CASCADE, related_name='liste', verbose_name="liste")
+    notification = models.ForeignKey(
+        Notification, on_delete=models.CASCADE, related_name='notification', verbose_name="notification")
+
+    class Meta:
+        verbose_name = "utilisateur"
+
+    def __str__(self):
+        return self.user
