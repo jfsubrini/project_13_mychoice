@@ -76,12 +76,18 @@ WSGI_APPLICATION = 'mychoice.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mychoice_db',
-        'USER': 'root',
-        'PASSWORD': 'jeremiehugo1',
+        'ENGINE': 'django.db.backends.postgresql',   # use of the postgreSQL SGBD
+        'NAME': 'mychoice',  # name of the database
+        'USER': '',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
-        'PORT': '3306',
+        # 'PORT': '5432',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'mychoice_db',
+        # 'USER': 'root',
+        # 'PASSWORD': 'jeremiehugo1',
+        # 'HOST': '127.0.0.1',
+        # 'PORT': '3306',
     }
 }
 
