@@ -78,12 +78,18 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mychoice_db',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
+        'USER': 'root',
+        'PASSWORD': 'jeremiehugo1',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
+
+
+# # Custom User model
+
+# AUTH_USER_MODEL = 'culture.UserProfile' 
+
 
 
 # Password validation
@@ -123,3 +129,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+# Email confirmation for password reset during development only
+# Console backend
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Email confirmation for password reset in production
+DEFAULT_FROM_EMAIL=os.environ.get('EMAIL_USER')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')

@@ -8,6 +8,7 @@
 # from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
+# from django.contrib.auth.models import AbstractUser
 
 
 
@@ -19,7 +20,7 @@ class Category(models.Model):
         ('S', 'Séries'),
         ('M', 'Musique'),
         )
-    name = models.CharField("catégorie", max_length=1, choices=CATEGORY_NAME)
+    name = models.CharField("nom de la catégorie", max_length=1, choices=CATEGORY_NAME)
 
     class Meta:
         verbose_name = "catégorie"
@@ -28,11 +29,11 @@ class Category(models.Model):
         return self.name
 
 
-class Recommandation(models.Model):
-    """To create the Recommandation table in the database which stores
-    the recommandation of cultural products of each user."""
-    comment = models.TextField("commentaires")
-    date = models.DateTimeField("date", auto_now=True)
+class Recommendation(models.Model):
+    """To create the Recommendation table in the database which stores
+    the recommendation of cultural products of each user."""
+    comment = models.TextField("commentaires du produit culturel")
+    date = models.DateTimeField("date de création", auto_now=True)
 
     class Meta:
         verbose_name = "commentaires"
@@ -49,18 +50,19 @@ class CulturalProduct(models.Model):
         Category, on_delete=models.CASCADE, related_name='category', verbose_name="catégorie")
     director = models.CharField("réalisateur", max_length=100, blank=True)
     editor = models.CharField("éditeur", max_length=100, blank=True)
-    collection = models.CharField("collection", max_length=100, blank=True)
+    collection = models.CharField(max_length=100, blank=True)
     price = models.DecimalField("prix", max_digits=5, decimal_places=2, null=True)
-    isbn = models.CharField("isbn", max_length=20, blank=True)
+    isbn = models.CharField(max_length=20, blank=True)
     year = models.SmallIntegerField("année")
     genre = models.CharField("genre", max_length=30, blank=True)
     nationality = models.CharField("nationalité", max_length=20, blank=True)
-    pages = models.SmallIntegerField("pages", null=True)
+    pages = models.SmallIntegerField(null=True)
     language = models.CharField("langue", max_length=30, blank=True)
-    label = models.CharField("genre", max_length=30, blank=True)
+    label = models.CharField(max_length=30, blank=True)
     image = models.ImageField("image du produit")
-    recommandation = models.ForeignKey(
-        Recommandation, on_delete=models.CASCADE, related_name='recommandation', verbose_name="recommandation")
+    recommendation = models.ForeignKey(
+        Recommendation, on_delete=models.CASCADE, related_name='recommendation_text',\
+        verbose_name="texte de recommandation")
 
     class Meta:
         verbose_name = "produit culturel"
@@ -72,31 +74,33 @@ class CulturalProduct(models.Model):
 class MyList(models.Model):
     """To create the MyList table in the database which stores
     the list of cultural products for each user."""
-    setting = models.DateTimeField("date", auto_now=True)
-    cultural_product = models.ManyToManyField(
-        CulturalProduct, related_name='cultural_product_selected', verbose_name="porduit culturel sélectionné")
+    setting = models.DateTimeField("date de création", auto_now=True)
+    cultural_products = models.ManyToManyField(
+        CulturalProduct, related_name='cultural_product_selected',\
+        verbose_name="porduit culturel sélectionné")
 
     class Meta:
         verbose_name = "ma liste"
 
     def __str__(self):
-        return self.cultural_product
+        return self.cultural_products
 
 
 class Notification(models.Model):
     """To create the Notification table in the database which stores
     the notification of each user."""
-    setting = models.DateTimeField("date", auto_now=True)
-    category_to_follow = models.ManyToManyField(
-        Category, related_name='category_to_follow', verbose_name="catégories à suivre")
+    setting = models.DateTimeField("date de création", auto_now=True)
+    categories = models.ManyToManyField(
+        Category, related_name='category_to_follow', verbose_name="catégorie(s) à suivre")
 
     class Meta:
         verbose_name = "notification"
 
     def __str__(self):
-        return self.category_to_follow
+        return self.categories
 
 
+# class UserProfile(AbstractUser):
 class UserProfile(models.Model):
     """To create the ...."""
     GENDER = (
@@ -135,20 +139,24 @@ class UserProfile(models.Model):
         ('EUROPE', 'Europe'),
         ('MONDE', 'Reste du monde'),
         )
-    # user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # username = models.CharField("utilisateur", max_length=50)
-    # email = models.EmailField("email", max_length=100)
+    # user = models.OneToOneField(
+    #     settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="utilisateur")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="utilisateur")
+    # username = models.CharField("nom d'utilisateur", max_length=50)
+    # email = models.EmailField(max_length=100)
     # password = models.CharField("mot de passe", max_length=30)
-    gender = models.CharField("catégorie", max_length=1, choices=GENDER)
-    age = models.CharField("catégorie", max_length=1, choices=AGE_BRACKET)
-    region = models.CharField("catégorie", max_length=6, choices=REGION)
-    photo = models.ImageField("photo", upload_to='profile_photo', blank=True)
-    presentation = models.TextField("presentation", blank=True)
-    mylist = models.ForeignKey(
-        MyList, on_delete=models.CASCADE, related_name='liste', verbose_name="liste")
+    gender = models.CharField("genre", max_length=1, choices=GENDER)
+    age = models.CharField("âge", max_length=1, choices=AGE_BRACKET)
+    region = models.CharField("région", max_length=6, choices=REGION)
+    photo = models.ImageField("photo du profil", upload_to='profile_photo', blank=True)
+    presentation = models.TextField(blank=True)
+    my_list = models.ForeignKey(
+        MyList, on_delete=models.CASCADE, related_name='liste', verbose_name="ma liste")
     notification = models.ForeignKey(
-        Notification, on_delete=models.CASCADE, related_name='notification', verbose_name="notification")
+        Notification, on_delete=models.CASCADE, related_name='notification')
+    cultural_products = models.ManyToManyField(
+        CulturalProduct, related_name='cultural_product_recommended',\
+        verbose_name="produit culturel recommandé")
 
     class Meta:
         verbose_name = "utilisateur"
