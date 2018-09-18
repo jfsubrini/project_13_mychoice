@@ -78,9 +78,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',   # use of the postgreSQL SGBD
         'NAME': 'mychoice',  # name of the database
-        'USER': '',
+        'USER': 'jef',
         'PASSWORD': '',
-        'HOST': '',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
         # 'ENGINE': 'django.db.backends.mysql',
         # 'NAME': 'mychoice_db',
