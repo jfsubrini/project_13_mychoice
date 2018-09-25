@@ -1,5 +1,6 @@
 {% extends 'culture/base.html' %}
 {% block title %}Créez un compte{% endblock title %}
+{% block header_title %}Créez un compte{% endblock header_title %}
 {% block content %}
 {% load static %}
 
@@ -138,14 +139,12 @@
 								<label class="col-md-3 col-form-label"></label>
 									<div class="col-lg-6 mb-sm-4 mb-lg-0">
 										<div class="input-group">
-											<div class="input-group-prepend">
-												<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"><span class="fa fa-download"></span> &nbsp;Télécharger <span class="caret"></span></button>
-												<ul class="dropdown-menu">
-													<li><a href="#">Action</a></li>
-													<li><a href="#">Another action</a></li>
-												</ul>
-											</div>
-											<input type="text" class="form-control">
+											<form method="post" enctype="multipart/form-data">
+												<div class="input-group-prepend">
+													<button type="button" class="btn btn-secondary" data-toggle="dropdown"><span class="fa fa-download"></span> &nbsp;Télécharger <span class="caret"></span></button>
+												</div>
+												<input type="file" class="form-control btn btn-secondary" name="user_photo">
+											</form>
 										</div>
 									</div>
 							</div>

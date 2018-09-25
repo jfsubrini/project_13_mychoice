@@ -29,51 +29,33 @@ class Category(models.Model):
         return self.name
 
 
-class Recommendation(models.Model):
-    """To create the Recommendation table in the database which stores
-    the recommendation of cultural products of each user."""
-    comment = models.TextField("commentaires du produit culturel")
-    date = models.DateTimeField("date de création", auto_now=True)
-
-    class Meta:
-        verbose_name = "commentaires"
-
-    def __str__(self):
-        return self.comment
-
-
 class CulturalProduct(models.Model):
-    """To create the CulturalProduct table in the database with 8 attributs (fields)."""
+    """To create the CulturalProduct table in the database with possibly 12 attributs (fields)."""
     title = models.CharField("titre", max_length=100)
-    author = models.CharField("auteur", max_length=100, blank=True)
+    author_director = models.CharField("auteur ou réalisateur", max_length=100)
+    editor_label = models.CharField("éditeur ou label", max_length=100)
+    year = models.SmallIntegerField("année")
+    image = models.ImageField("image du produit", upload_to='product_image/')
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, related_name='category', verbose_name="catégorie")
-    director = models.CharField("réalisateur", max_length=100, blank=True)
-    editor = models.CharField("éditeur", max_length=100, blank=True)
-    collection = models.CharField(max_length=100, blank=True)
+    collection = models.CharField("collection", max_length=100, blank=True)
     price = models.DecimalField("prix", max_digits=5, decimal_places=2, null=True)
-    isbn = models.CharField(max_length=20, blank=True)
-    year = models.SmallIntegerField("année")
+    isbn = models.CharField("isbn-13", max_length=20, blank=True)
     genre = models.CharField("genre", max_length=30, blank=True)
     nationality = models.CharField("nationalité", max_length=20, blank=True)
     pages = models.SmallIntegerField(null=True)
     language = models.CharField("langue", max_length=30, blank=True)
-    label = models.CharField(max_length=30, blank=True)
-    image = models.ImageField("image du produit")
-    recommendation = models.ForeignKey(
-        Recommendation, on_delete=models.CASCADE, related_name='recommendation_text',\
-        verbose_name="texte de recommandation")
 
     class Meta:
         verbose_name = "produit culturel"
 
     def __str__(self):
-        return '%s %s' % (self.title)
+        return self.title
 
 
 class MyList(models.Model):
-    """To create the MyList table in the database which stores
-    the list of cultural products for each user."""
+    """To create the MyList table in the database which stores the user's selection
+    of cultural products."""
     setting = models.DateTimeField("date de création", auto_now=True)
     cultural_products = models.ManyToManyField(
         CulturalProduct, related_name='cultural_product_selected',\
@@ -100,21 +82,11 @@ class Notification(models.Model):
         return self.categories
 
 
-# class UserProfile(AbstractUser):
 class UserProfile(models.Model):
     """To create the ...."""
     GENDER = (
         ('M', 'Masculin'),
         ('F', 'Féminin'),
-        )
-    AGE_BRACKET = (
-        ('1', 'Moins de 18 ans'),
-        ('2', 'De 18 à 25 ans'),
-        ('3', 'De 26 à 35 ans'),
-        ('4', 'De 36 à 45 ans'),
-        ('5', 'De 46 à 59 ans'),
-        ('6', 'De 60 à 75 ans'),
-        ('7', 'Plus de 75 ans'),
         )
     REGION = (
         ('FR-ARA', 'Auvergne-Rhône-Alpes'),
@@ -139,20 +111,15 @@ class UserProfile(models.Model):
         ('EUROPE', 'Europe'),
         ('MONDE', 'Reste du monde'),
         )
-    # user = models.OneToOneField(
-    #     settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="utilisateur")
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="utilisateur")
-    # username = models.CharField("nom d'utilisateur", max_length=50)
-    # email = models.EmailField(max_length=100)
-    # password = models.CharField("mot de passe", max_length=30)
     gender = models.CharField("genre", max_length=1, choices=GENDER)
-    age = models.CharField("âge", max_length=1, choices=AGE_BRACKET)
+    age = models.DateField("âge")
     region = models.CharField("région", max_length=6, choices=REGION)
-    photo = models.ImageField("photo du profil", upload_to='profile_photo', blank=True)
-    presentation = models.TextField(blank=True)
-    my_list = models.ForeignKey(
+    photo = models.ImageField("photo du profil", upload_to='profile_photo/%d/%m/%Y/', null=True)
+    presentation = models.TextField("présentation", blank=True)
+    my_list = models.OneToOneField(
         MyList, on_delete=models.CASCADE, related_name='liste', verbose_name="ma liste")
-    notification = models.ForeignKey(
+    notification = models.OneToOneField(
         Notification, on_delete=models.CASCADE, related_name='notification')
     cultural_products = models.ManyToManyField(
         CulturalProduct, related_name='cultural_product_recommended',\
@@ -163,3 +130,22 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user
+
+
+class Recommendation(models.Model):
+    """To create the Recommendation table in the database which stores
+    the recommendation of cultural products from each user."""
+    comment = models.TextField("commentaires du produit culturel")
+    date = models.DateTimeField("date de création", auto_now=True)
+    user_profile = models.ForeignKey(
+        UserProfile, on_delete=models.CASCADE, related_name='recommendation_text', \
+        verbose_name="texte de recommandation")
+    cultural_product = models.ForeignKey(
+        CulturalProduct, on_delete=models.CASCADE, related_name='recommendation_text',\
+        verbose_name="texte de recommandation")
+
+    class Meta:
+        verbose_name = "commentaires"
+
+    def __str__(self):
+        return self.cultural_product
