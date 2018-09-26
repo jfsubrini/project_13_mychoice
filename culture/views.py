@@ -33,3 +33,16 @@
 #     context_object_name = "profile"
 #     model = User
 #     template_name = "culture/profile.html"
+
+
+    # AGE_BRACKET = (
+    #     ('1', 'Moins de 18 ans'),
+    #     ('2', 'De 18 à 25 ans'),
+    #     ('3', 'De 26 à 35 ans'),
+    #     ('4', 'De 36 à 45 ans'),
+    #     ('5', 'De 46 à 59 ans'),
+    #     ('6', 'De 60 à 75 ans'),
+    #     ('7', 'Plus de 75 ans'),
+    #     )
+
+
