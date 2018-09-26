@@ -92,9 +92,10 @@ DATABASES = {
 }
 
 
-# # Custom User model
 
-# AUTH_USER_MODEL = 'culture.UserProfile' 
+# For User uploaded Profile Photo
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
