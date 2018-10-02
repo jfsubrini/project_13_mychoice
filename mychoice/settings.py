@@ -63,6 +63,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -76,12 +77,12 @@ WSGI_APPLICATION = 'mychoice.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mychoice_db',
-        'USER': '',
+        'ENGINE': 'django.db.backends.postgresql',   # use of the postgreSQL SGBD
+        'NAME': 'mychoice',  # name of the database
+        'USER': 'jef',
         'PASSWORD': '',
-        'HOST': '',
-        'PORT': '3306',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -123,3 +124,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# For User uploaded Profile Photo
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# Email confirmation for password reset during development only
+# Console backend
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Email confirmation for password reset in production
+DEFAULT_FROM_EMAIL=os.environ.get('EMAIL_USER')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')

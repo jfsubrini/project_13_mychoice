@@ -1,0 +1,73 @@
+{% extends 'culture/base.html' %}
+{% block title %}Connexion{% endblock title %}
+{% block header_title %}Connexion{% endblock header_title %}
+{% block content %}
+{% load static %}
+
+<section class="row signin_img">
+	<div class="col-sm-12 transparency2">
+		<section class="row">
+			<div class="col-12">
+				<div class="card mb-4">
+					<div class="card-block">
+						<h3 class="card-title">Connectez-vous à votre compte</h3>
+						<form class="post">
+							{% csrf_token %}
+		
+							<!-- Username input-->
+							<div class="form-group row">
+								<label class="col-md-3 col-form-label">Nom</label>
+								<div class="col-md-9">
+									<input type="text" name="username" placeholder="Entrez votre nom d'utilisateur" class="form-control">
+								</div>
+							</div>
+							<!-- Password -->
+							<div class="form-group row">
+								<label class="col-md-3 col-form-label">Mot de passe</label>
+								<div class="col-md-9">
+									<input class="form-control" type="password" name="password" placeholder="Entrez votre mot de passe">
+								</div>
+							</div>
+							<!-- Submit -->
+							<div class="form-group">
+								<div class="col-12 widget-right no-padding">
+									<button class="btn btn-success margin float-right" type="submit"><span class="fa fa-check"></span> &nbsp;Connectez-vous</button>
+								</div>
+							</div>
+							<!-- Link to password reset  -->
+							<div class="form-group row">
+						      <div class="col-lg-12 reset text-center">
+						        <a href="{% url 'password_reset' %}"><h5>Vous avez oublié votre mot de passe<br>ou/et vous voulez en changer ?</h5></a>
+						      </div>
+						    </div>
+						</div>
+						</form>
+						<!-- Failed connexion message -->	
+						<div class="filling_errors">
+
+        				{% if form.errors %}
+							<p><strong>Le nom d'utilisateur est inconnu ou/et le mot de passe est erroné.<br>Veuillez essayer à nouveau avec les bonnes coordonnées de votre compte.</strong></p>
+      					{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+</section>
+
+{% endblock content %}
