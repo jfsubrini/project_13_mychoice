@@ -17,6 +17,43 @@
 
 
 
+####### REGISTER #######
+def register(request):
+    """View to the user register page and validation of the user form."""
+    # Analysis and treatment of the register form that has been sent.
+    if request.method == "POST":
+        form = AccountForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            gender = form.cleaned_data['gender']
+            age = form.cleaned_data['age']
+            region = form.cleaned_data['region']
+            presentation = form.cleaned_data['presentation']
+            photo = form.cleaned_data['photo']
+            user = User.objects.create_user(
+                username, email, password, gender, age, region, presentation, photo)
+            user = authenticate(request, username=username, email=email, password=password)
+            # If data are valid, automatic log in and redirection to 'Mon Compte' page.
+            login(request, user)
+            return redirect('account')
+    else:
+        form = AccountForm()
+
+    # What to render to the template.
+    context = {
+        'form': form,
+        'errors': form.errors.items()
+        }
+    return render(request, 'food/account/register.html', context)
+
+
+
+
+
+
+
 
 
 # ####### PAGE D'INFORMATION SUR UN PRODUIT CULTUREL RECOMMANDE #######

@@ -3,6 +3,8 @@
 
 # Django imports
 from django.urls import path, re_path
+from django.conf import settings
+from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from django.contrib.auth.views import (
     LoginView,
@@ -54,3 +56,6 @@ urlpatterns = [
     path('profile/', TemplateView.as_view(template_name='culture/profile.html'), name='profile'),
     # path('profile/<int:pk>/', views.Profile.as_view(), name='profile'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

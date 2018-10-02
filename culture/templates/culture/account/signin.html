@@ -10,39 +10,28 @@
 			<div class="col-12">
 				<div class="card mb-4">
 					<div class="card-block">
-						<h3 class="card-title">Créez votre compte</h3>
-						<form class="form" action="#">
-							<!-- Email input-->
+						<h3 class="card-title">Connectez-vous à votre compte</h3>
+						<form class="post">
+							{% csrf_token %}
+		
+							<!-- Username input-->
 							<div class="form-group row">
-								<label class="col-md-3 col-form-label" for="email">Votre E-mail</label>
+								<label class="col-md-3 col-form-label">Nom</label>
 								<div class="col-md-9">
-									<input id="email" name="email" type="text" placeholder="Entrez votre email" class="form-control">
+									<input type="text" name="username" placeholder="Entrez votre nom d'utilisateur" class="form-control">
 								</div>
 							</div>
 							<!-- Password -->
 							<div class="form-group row">
 								<label class="col-md-3 col-form-label">Mot de passe</label>
 								<div class="col-md-9">
-									<input class="form-control" type="password" name="pass" placeholder="Entrez votre mot de passe">
+									<input class="form-control" type="password" name="password" placeholder="Entrez votre mot de passe">
 								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-md-3 col-form-label">Valid Input</label>
-								<div class="col-md-9">
-									<input type="text" class="form-control is-valid" id="inputHorizontalSuccess">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-md-3 col-form-label">Danger</label>
-								<div class="col-md-9">
-									<input type="text" class="form-control is-invalid" id="inputHorizontalDnger">
-									<div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
-									<small class="form-text text-muted">Example help text that remains unchanged.</small></div>
 							</div>
 							<!-- Submit -->
 							<div class="form-group">
 								<div class="col-12 widget-right no-padding">
-									<button class="btn btn-success margin float-right" type="button"><span class="fa fa-check"></span> &nbsp;Connectez-vous</button>
+									<button class="btn btn-success margin float-right" type="submit"><span class="fa fa-check"></span> &nbsp;Connectez-vous</button>
 								</div>
 							</div>
 							<!-- Link to password reset  -->
@@ -53,11 +42,27 @@
 						    </div>
 						</div>
 						</form>
+						<!-- Failed connexion message -->	
+						<div class="filling_errors">
+
+        				{% if form.errors %}
+							<p><strong>Le nom d'utilisateur est inconnu ou/et le mot de passe est erroné.<br>Veuillez essayer à nouveau avec les bonnes coordonnées de votre compte.</strong></p>
+      					{% endif %}
+						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		
+	</div>
+
+</section>
+
+
+
+
+
+
+
 
 
 

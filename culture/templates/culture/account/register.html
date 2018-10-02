@@ -11,13 +11,16 @@
 				<div class="card mb-4">
 					<div class="card-block">
 						<h3 class="card-title">Créez votre compte</h3>
-						<form class="form" action="#">
+						<form class="form" method="post" enctype="multipart/form-data">
+							{% csrf_token %}
 
 							<!-- Username -->
 							<div class="form-group row">
 								<label class="col-md-3 col-form-label">Nom d'utilisateur</label>
 								<div class="col-md-9">
-									<input class="form-control" type="text" name="placeholder" placeholder="Entrez votre nom d'utilisateur">
+									{{ form.username }}
+
+                  <input class="form-control" type="text" name="placeholder" placeholder="Entrez votre nom d'utilisateur" required="required">
 								</div>
 							</div>
 
@@ -25,7 +28,9 @@
 							<div class="form-group row">
 								<label class="col-md-3 col-form-label" for="email">Votre E-mail</label>
 								<div class="col-md-9">
-									<input id="email" name="email" type="text" placeholder="Entrez votre email" class="form-control">
+									{{ form.email }}
+
+                  <input id="email" name="email" type="text" placeholder="Entrez votre email" class="form-control" required="required">
 								</div>
 							</div>
 
@@ -33,7 +38,9 @@
 							<div class="form-group row">
 								<label class="col-md-3 col-form-label">Mot de passe</label>
 								<div class="col-md-9">
-									<input class="form-control" type="password" name="pass" placeholder="Entrez votre mot de passe">
+                  {{ form.password }}
+
+									<input class="form-control" type="password" name="pass" placeholder="Entrez votre mot de passe" required="required">
 								</div>
 							</div>
 
@@ -41,6 +48,8 @@
 							<div class="form-group row">
 								<label class="col-md-3 col-form-label">Genre</label>
 								<div class="col-md-9">
+                  {{ form.gender }}
+
 									<div class="custom-control custom-radio">
 										  <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
 										  <label class="custom-control-label custom-control-description" for="customRadio1">Masculin</label>
@@ -57,24 +66,22 @@
 							<div class="form-group row">
 								<label class="col-md-3 col-form-label">Âge</label>
 								<div class="col-md-9">
-									<select class="custom-select form-control">
-										<option selected>Renseignez votre tranche d'âge</option>
-										<option value="1">Moins de 18 ans</option>
-										<option value="2">De 18 à 25 ans</option>
-										<option value="3">De 26 à 35 ans</option>
-										<option value="4">De 36 à 45 ans</option>
-										<option value="5">De 46 à 59 ans</option>
-										<option value="6">De 60 à 75 ans</option>
-										<option value="7">Plus de 75 ans</option>
-									</select>
+                  {{ form.age }}
+
+            			<input type="text" id="identite_form_dateNaissance" name="identite_form[dateNaissance]" required="required" class="form-control" placeholder="Entrez votre date de naissance" maxlength="10"> 
+                        <small class="text-muted p-1">Format: jj/mm/aaaa</small>
+   
+        
 								</div>
 							</div>
 
 							<!-- Geographic place -->
 							<div class="form-group row">
 								<label class="col-md-3 col-form-label">Région</label>
+                {{ form.region }}
+
 								<div class="col-md-9">
-									<select class="custom-select form-control">
+									<select class="custom-select form-control" required="required">
 										<option selected>Renseignez votre région de résidence</option>
 										<option value="1">Auvergne-Rhône-Alpes</option>
 										<option value="2">Bourgogne-Franche-Comté</option>
@@ -100,72 +107,86 @@
 								</div>
 							</div>
 
-							<!-- FFDFDFDDFDFDFGDFGDFGDFGDFG -->
-							<div class="form-group row">
-								<label class="col-md-3 col-form-label">Valid Input</label>
-								<div class="col-md-9">
-									<input type="text" class="form-control is-valid" id="inputHorizontalSuccess">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-md-3 col-form-label">Danger</label>
-								<div class="col-md-9">
-									<input type="text" class="form-control is-invalid" id="inputHorizontalDnger">
-									<div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
-									<small class="form-text text-muted">Example help text that remains unchanged.</small></div>
-							</div>
-
-							<!-- Comments from the user -->
+							<!-- Presentation of the user -->
 							<div class="form-group row">
 								<label class="col-md-3 col-form-label" for="message">Votre description</label>
 								<div class="col-md-9">
-									<textarea class="form-control" id="message" name="message" placeholder="Ecrivez un petit texte décrivant vos passions et votre intérêt pour la culture." rows="10"></textarea>
+									{{ form.presentation }}
+
+                  <textarea class="form-control" id="message" name="message" placeholder="Ecrivez un petit texte décrivant vos passions et votre intérêt pour la culture." rows="10"></textarea>
 								</div>
 							</div>
 
-							<!-- Check profil photo ? -->
+							<!-- Downloading the profile photo -->
 							<div class="form-group row">
-								<label class="col-md-3 col-form-label"></label>
+								<label class="col-md-3 col-form-label">Photo de profil</label>
 									<div class="col-lg-6 mb-sm-4 mb-lg-0">
-										<div class="custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input" id="customCheck1">
-											<label class="custom-control-label custom-control-description" for="customCheck1">Je désire mettre une photo de profil</label>
-										</div>
-									</div>
-							</div>
+                    {{ form.photo }}
+                    
+                    <div class="input-group">
 
-							<!-- Downloading the profil photo -->
-							<div class="form-group row">
-								<label class="col-md-3 col-form-label"></label>
-									<div class="col-lg-6 mb-sm-4 mb-lg-0">
-										<div class="input-group">
-											<form method="post" enctype="multipart/form-data">
-												<div class="input-group-prepend">
-													<button type="button" class="btn btn-secondary" data-toggle="dropdown"><span class="fa fa-download"></span> &nbsp;Télécharger <span class="caret"></span></button>
+
+                      <div class="document">
+                        <div class="document-file ">
+                          <div class="row">
+                            <div class="col pr-0">
+                              <div class="custom-file">
+                                <input type="file" id="identite_form_pieceIdentite_file" name="identite_form[pieceIdentite][file]" accept="application/pdf,application/x-pdf" onchange="onFileChange(event)" data-original-name="" class="custom-file-input" lang="fr">
+                                <label id="identite_form_pieceIdentite_file-label" class="custom-file-label" for="customFile" data-label-default="Choisissez un fichier">
+                      Choisissez une photo
+                  </label> </div>
+                            </div>
+                            <div class="col-auto pl-0">
+                              <button id="identite_form_pieceIdentite_file-action-delete" class="btn btn-outline-danger ml-2" style="display: none; height: calc(2.25rem + 2px);" title="Supprimer le fichier actuel" onclick="onClickDeleteButton(event)" data-file-input-id="identite_form_pieceIdentite_file">
+                                          <i class="fa fa-remove" aria-hidden="true"></i>
+                                      </button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div id="identite_form_pieceIdentite_file-help" style="1">
+                          <small class="text-muted">
+                          Taille du fichier limitée à 500 Ko. 
+                          </small>
+                        </div>
+                        <input type="hidden" id="identite_form_pieceIdentite_file_remove" name="identite_form[pieceIdentite][file_remove]">
+
+
+
+
+
+<!-- 											<form method="post" enctype="multipart/form-data">
+ -->												<div class="input-group-prepend">
+													<button type="submit" class="btn btn-secondary"><span class="fa fa-download"></span> &nbsp;Télécharger </span></button>
 												</div>
 												<input type="file" class="form-control btn btn-secondary" name="user_photo">
-											</form>
-										</div>
+<!-- 											</form>
+ -->										</div>
 									</div>
 							</div>
 
 							<!-- Submit -->
 							<div class="form-group">
 								<div class="col-12 widget-right no-padding">
-									<button class="btn btn-success margin float-right" type="button"><span class="fa fa-check"></span> &nbsp;Enregistrer</button>
+									<button class="btn btn-success margin float-right" type="submit"><span class="fa fa-check"></span> &nbsp;Enregistrer</button>
 								</div>
 							</div>
 						</div>
 						</form>
+            <!-- Input filling errors messages -->  
+            <div class="filling_errors">
+              {% if errors %}
+                  {% for key, error in errors %}
+                  {% autoescape off %}
+                        {{ error }}
+                      {% endautoescape %}
+                        {% endfor %}
+                {% endif %}
+            </div>
 					</div>
 				</div>
 			</div>
 		</section>
-		
-
-
-
-
 	</div>
 </section>
 

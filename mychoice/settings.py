@@ -63,6 +63,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -84,13 +85,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
-
-
-# For User uploaded Profile Photo
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 
 
 # Password validation
@@ -131,6 +125,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# For User uploaded Profile Photo
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Email confirmation for password reset during development only
